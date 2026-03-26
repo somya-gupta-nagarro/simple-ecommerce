@@ -1,0 +1,34 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="/static/styles.css"/>
+</head>
+<body>
+<header>
+  <h1><a href="/">Simple Shop</a></h1>
+</header>
+<main>
+  <h2>Your Cart</h2>
+  <% if (!cart.length) { %>
+    <p>Cart is empty.</p>
+  <% } else { %>
+    <table>
+      <thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
+      <tbody>
+      <% cart.forEach(i => { %>
+        <tr>
+          <td><%= i.name %></td>
+          <td><%= i.qty %></td>
+          <td>₹<%= i.price * i.qty %></td>
+        </tr>
+      <% }) %>
+      </tbody>
+    </table>
+    <p class="total">Total: ₹<%= total %></p>
+  <% } %>
+</main>
+</body>
+</html>

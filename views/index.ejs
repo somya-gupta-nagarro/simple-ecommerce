@@ -1,0 +1,34 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Simple Shop</title>
+  <link rel="stylesheet" href="/static/styles.css"/>
+</head>
+<body>
+<header>
+  <h1>Simple Shop</h1>
+  <nav><a href="/cart">Cart</a></nav>
+</header>
+<main>
+  <div class="grid">
+    <% products.forEach(p => { %>
+      <div class="card">
+        <img src="<%= p.image %>" alt="<%= p.name %>"/>
+        <h3><%= p.name %></h3>
+        <p>₹<%= p.price %></p>
+        <button onclick="add(<%= p.id %>)">Add to Cart</button>
+      </div>
+    <% }) %>
+  </div>
+</main>
+<script>
+async function add(id){
+  const res = await fetch('/cart/add', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({id})});
+  const data = await res.json();
+  alert('Added! Cart items: ' + data.cartCount);
+}
+</script>
+</body>
+</html>

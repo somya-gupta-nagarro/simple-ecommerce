@@ -1,0 +1,17 @@
+{
+  "name": "simple-eb-ecommerce",
+  "version": "1.0.0",
+  "description": "Ultra-simple e-commerce sample for AWS Elastic Beanstalk (Node.js)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.9",
+    "express-session": "^1.17.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
