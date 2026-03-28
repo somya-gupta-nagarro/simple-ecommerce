@@ -19,8 +19,8 @@ app.set('view engine', 'ejs');
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
 const products = [
-  { id: 1, name: 'Basic Tee', price: 499, image: '/static/img/tee.svg' },
-  { id: 2, name: 'Mug', price: 299, image: '/static/img/mug.svg' }
+  { id: 1, name: 'Basic Tee', price: 499, image: 'https://webappimages.blob.core.windows.net/images/tea.webp' },
+  { id: 2, name: 'Mug', price: 299, image: 'https://webappimages.blob.core.windows.net/images/mug.webp' }
 ];
 
 function getCart(req) {
