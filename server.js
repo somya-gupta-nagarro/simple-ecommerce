@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
-
+const axios = require('axios');
 const app = express();
 
 app.use(express.json());
@@ -49,6 +49,32 @@ app.get('/cart', (req, res) => {
   const cart = getCart(req);
   const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
   res.render('cart', { cart, total });
+});
+
+app.post('/order/place', async (req, res) => {
+  const cart = getCart(req);
+
+  if (!cart.length) {
+    return res.status(400).json({ error: 'Cart is empty' });
+  }
+
+  const order = {
+    orderId: Date.now().toString(),
+    email: "user@example.com",
+    status: "COMPLETED",
+  };
+
+  try {
+    await axios.post("https://prod-04.centralindia.logic.azure.com:443/workflows/fd50411dc83f4020b0254c4fda604568/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=rGsdJFF1YFCGMR3wv2Hpn0qcNGuUC0UeQPJENyGHSxA", order);
+
+    req.session.cart = [];
+
+    res.json({ ok: true, message: "Order placed & email sent" });
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Order placed but email failed" });
+  }
 });
 
 const port = process.env.PORT || 3000;

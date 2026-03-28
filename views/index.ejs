@@ -19,6 +19,7 @@
         <h3><%= p.name %></h3>
         <p>₹<%= p.price %></p>
         <button onclick="add(<%= p.id %>)">Add to Cart</button>
+        <button onclick="placeOrder()">Place Order</button>
       </div>
     <% }) %>
   </div>
@@ -28,6 +29,17 @@ async function add(id){
   const res = await fetch('/cart/add', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({id})});
   const data = await res.json();
   alert('Added! Cart items: ' + data.cartCount);
+}
+async function placeOrder(){
+  const res = await fetch('/order/place', { method: 'POST' });
+  const data = await res.json();
+
+  if(data.ok){
+    alert("Order placed!");
+    window.location.href = "/";
+  } else {
+    alert(data.error);
+  }
 }
 </script>
 </body>
