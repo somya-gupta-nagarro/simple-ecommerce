@@ -65,7 +65,7 @@ app.post('/order/place', async (req, res) => {
   };
 
   try {
-    await axios.post("https://prod-04.centralindia.logic.azure.com:443/workflows/fd50411dc83f4020b0254c4fda604568/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=rGsdJFF1YFCGMR3wv2Hpn0qcNGuUC0UeQPJENyGHSxA", order);
+    //await axios.post("https://prod-04.centralindia.logic.azure.com:443/workflows/fd50411dc83f4020b0254c4fda604568/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=rGsdJFF1YFCGMR3wv2Hpn0qcNGuUC0UeQPJENyGHSxA", order);
 
     req.session.cart = [];
 
