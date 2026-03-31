@@ -9,9 +9,6 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -54,9 +51,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_010BBFF8D48C43C3BB3124023EC5DF87 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_9C7E255A6CA844A2ACCCA103457A431C }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_FD3B537802814ACD94B3DD1CAEA728F2 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A9E13C8953814FA4AF8A2FCC065997FC }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_ED8AE251846245E58143D40BCF26BA66 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6A8B538C90E94D17B46B9E2D7EDEB6DD }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
