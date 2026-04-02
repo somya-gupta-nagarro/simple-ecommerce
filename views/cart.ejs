@@ -16,13 +16,10 @@
     <p>Cart is empty.</p>
   <% } else { %>
     <table>
-      <thead><tr><th>Image</th><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
+      <thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
       <tbody>
       <% cart.forEach(i => { %>
         <tr>
-            <td>
-              <img src="<%= i.image %>" alt="<%= i.name %>" width="60"/>
-            </td>
           <td><%= i.name %></td>
           <td><%= i.qty %></td>
           <td>₹<%= i.price * i.qty %></td>
