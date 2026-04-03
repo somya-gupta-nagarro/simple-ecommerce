@@ -19,8 +19,8 @@ app.set('view engine', 'ejs');
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
 const products = [
-  { id: 1, name: 'Basic Tee', price: 499, image: 'https://webappimages.blob.core.windows.net/images/tea.webp' },
-  { id: 2, name: 'Mug', price: 299, image: 'https://webappimages.blob.core.windows.net/images/mug.webp' }
+  { id: 1, name: 'Basic Tee', price: 499, image: 'https://webappimages.blob.core.windows.net/images/tea.webp?sp=r&st=2026-04-03T12:49:10Z&se=2026-12-31T21:04:10Z&spr=https&sv=2024-11-04&sr=b&sig=sLtWmhdhNWoAB5js4TBGJ2DP6X43r5GAZdrjwqMnI9I%3D' },
+  { id: 2, name: 'Mug', price: 299, image: 'https://webappimages.blob.core.windows.net/images/mug.webp?sp=r&st=2026-04-03T12:47:56Z&se=2027-02-02T21:02:56Z&spr=https&sv=2024-11-04&sr=b&sig=Of%2BacZKvQZX42t8PZKevYTDf%2FcpzqDtyJ%2FP8gkpMgEc%3D' }
 ];
 
 function getCart(req) {
