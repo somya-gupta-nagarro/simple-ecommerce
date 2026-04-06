@@ -77,5 +77,18 @@ app.post('/order/place', async (req, res) => {
   }
 });
 
+app.post("/trigger-email", async (req, res) => {
+    const response = await fetch("https://prod-04.centralindia.logic.azure.com:443/workflows/fd50411dc83f4020b0254c4fda604568/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=rGsdJFF1YFCGMR3wv2Hpn0qcNGuUC0UeQPJENyGHSxA", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(req.body)
+    });
+
+    const data = await response.text();
+    res.send(data);
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on ${port}`));
